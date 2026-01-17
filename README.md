@@ -8,7 +8,12 @@
 ---
 
 ## 🛠️ Overview
-This repository demonstrates **Change Data Capture (CDC)** using **Snowflake Streams** and **Tasks** to keep a PROD table in sync with STAGING.
+This repository demonstrates Change Data Capture (CDC) using Snowflake Streams and Tasks to keep a PRODUCTION table in sync with STAGING.
+You will learn how to:
+
+Create Streams to track changes (INSERT, UPDATE, DELETE)
+Apply changes to a target table using MERGE
+Automate CDC with Snowflake Tasks
 
 ---
 
@@ -117,8 +122,26 @@ WHEN MATCHED AND METADATA$ACTION = 'INSERT' THEN UPDATE SET
 WHEN NOT MATCHED AND METADATA$ACTION = 'INSERT' THEN
     INSERT VALUES (S.EMPLOYEE_ID, S.FIRST_NAME, S.LAST_NAME, S.EMAIL, S.HIRE_DATE, S.DEPARTMENT_NAME, S.JOB_TITLE, S.COST_CENTER, S.LOCATION, S.MANAGER_NAME, S.EMPLOYMENTSTATUS, S.ISACTIVE);
 ```
-
 9.Verify production Table
 ```
 SELECT * FROM HR_DATALAKE.PRODUCTION.EMPLOYEE_DETAIL;
+```
+## 📂 Repo Structure
+```
+SNOWFLAKE STREAM & TASKS – (CHANGE TRACKING)/
+│
+├── README.md
+├── sql/
+│   ├── 01_create_database_warehouse_schema.sql
+│   ├── 02_create_tables.sql
+│   ├── 03_insert_data.sql
+│   ├── 04_create_stream_on_staging_table.sql
+│   ├── 05_create_target_table_on_production.sql
+│   ├── 06_move_data_from_staging_to_production.sql
+│   ├── 07_insert_and_update_data_on_staging.sql
+│   ├── 08_consume_streams_apply_changes_to_production.sql
+│   ├── 09_verify_production_table.sql
+│
+├── assets/
+│   └── images/
 ```
