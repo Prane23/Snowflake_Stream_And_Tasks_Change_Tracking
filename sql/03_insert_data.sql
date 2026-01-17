@@ -1,4 +1,4 @@
-
+--3. Insert data
 INSERT INTO HR_DATALAKE.STAGING.EMPLOYEE_DETAIL (
     EMPLOYEE_ID, FIRST_NAME, LAST_NAME, EMAIL, HIRE_DATE, DEPARTMENT_NAME, JOB_TITLE, COST_CENTER, LOCATION, MANAGER_NAME, EMPLOYMENTSTATUS, ISACTIVE
 ) VALUES
@@ -7,3 +7,5 @@ INSERT INTO HR_DATALAKE.STAGING.EMPLOYEE_DETAIL (
 (1003, 'Carla', 'Gomez', 'carla.gomez@corp.com', '2021-01-10', 'IT', 'Systems Engineer', 'CC103', 'Austin', 'David Brown', 'Full-Time', TRUE),
 (1004, 'Daniel', 'Patel', 'daniel.patel@corp.com', '2018-11-05', 'Marketing', 'Marketing Manager', 'CC104', 'Chicago', 'Emily Davis', 'Full-Time', TRUE),
 (1005, 'Emma', 'Wright', 'emma.wright@corp.com', '2022-06-18', 'HR', 'Recruiter', 'CC101', 'Los Angeles', 'Robert Smith', 'Full-Time', TRUE);
+
+SELECT * FROM HR_DATALAKE.STAGING.EMPLOYEE_DETAIL
