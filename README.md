@@ -237,3 +237,6 @@ SNOWFLAKE STREAM & TASKS – (CHANGE TRACKING)/
 |   ├── 12_Validate_data_in_Production _table.sql
 | 
 ```
+## 🙌 Author
+**Prashant**  
+Snowflake | Data Engineering | Cloud Analytics | ETL Architect
