@@ -232,5 +232,8 @@ SNOWFLAKE STREAM & TASKS – (CHANGE TRACKING)/
 │   ├── 07_insert_and_update_data_on_staging.sql
 │   ├── 08_consume_streams_apply_changes_to_production.sql
 │   ├── 09_verify_production_table.sql
-
+|   ├── 10_create_task_to_read_data_from_stream_and_schedule-to_run.sql
+|   ├── 11_insert_sample_data_on_staging.sql
+|   ├── 12_Validate_data_in_Production _table.sql
+| 
 ```
