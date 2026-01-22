@@ -22,13 +22,14 @@ graph TD
     B --> C[Task: APPLY_STREAM_CHANGES]
     C --> D[PRODUCTION Table]
 ```
+---
 ## ✅ Features
 - Create Stream on STAGING table to track changes (INSERT, UPDATE, DELETE)
 - Insert sample data into STAGING
 - Move data to PROD
 - Apply updates and consume stream changes using MERGE
 - Automate with Snowflake Task
-
+---
 🚀 Steps
 1. Create Database, Warehouse and schemas
 ```
@@ -216,7 +217,7 @@ SELECT * FROM HR_DATALAKE.PRODUCTION.EMPLOYEE_DETAIL;
 ```
 <img width="1409" height="594" alt="image" src="https://github.com/user-attachments/assets/bafd8bb1-0c3b-4784-a0e2-5d69482bb061" />
 
-
+---
 ## 📂 Repo Structure
 ```
 SNOWFLAKE STREAM & TASKS – (CHANGE TRACKING)/
@@ -237,6 +238,7 @@ SNOWFLAKE STREAM & TASKS – (CHANGE TRACKING)/
 |   ├── 12_Validate_data_in_Production _table.sql
 | 
 ```
+---
 ## 🙌 Author
 **Prashant**  
 Snowflake | Data Engineering | Cloud Analytics | ETL Architect
