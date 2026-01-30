@@ -12,9 +12,7 @@ You will learn how to:
 Create Streams to track changes (INSERT, UPDATE, DELETE)
 Apply changes to a target table using MERGE
 Automate CDC with Snowflake Tasks
-
 ---
-
 ## 🔗 Architecture
 ```mermaid
 graph TD
@@ -30,7 +28,7 @@ graph TD
 - Apply updates and consume stream changes using MERGE
 - Automate with Snowflake Task
 ---
-🚀 Steps
+## 🚀 Steps
 1. Create Database, Warehouse and schemas
 ```
 CREATE DATABASE IF NOT EXISTS HR_DATALAKE;
@@ -45,8 +43,8 @@ USE DATABASE HR_DATALAKE;
 CREATE SCHEMA IF NOT EXISTS PRODUCTION;
 ```
 2. Create staging Table employee_detail
-```CREATE OR REPLACE TABLE HR_DATALAKE.STAGING.EMPLOYEE_DETAIL (
-
+```
+CREATE OR REPLACE TABLE HR_DATALAKE.STAGING.EMPLOYEE_DETAIL (
     EMPLOYEE_ID NUMBER,
     FIRST_NAME STRING,
     LAST_NAME STRING,
@@ -88,7 +86,7 @@ SELECT * FROM HR_DATALAKE.STAGING.EMPLOYEE_DETAIL_STREAM
 CREATE OR REPLACE TABLE HR_DATALAKE.PRODUCTION.EMPLOYEE_DETAIL AS
 SELECT * FROM HR_DATALAKE.STAGING.EMPLOYEE_DETAIL WHERE 1=0; 
 ```
-6. move data from staging to production table
+6. Move data from staging to production table
 ```
 INSERT INTO HR_DATALAKE.PRODUCTION.EMPLOYEE_DETAIL
 SELECT * FROM HR_DATALAKE.STAGING.EMPLOYEE_DETAIL;
@@ -153,13 +151,14 @@ WHEN NOT MATCHED AND S.METADATA$ACTION = 'INSERT' THEN
     );
 
 ```
-9.Verify production Table
-```
+
+9. Verify production Table
+
 SELECT * FROM HR_DATALAKE.PRODUCTION.EMPLOYEE_DETAIL;
 
 <img width="1576" height="776" alt="image" src="https://github.com/user-attachments/assets/2c0d2902-79ae-4a25-ac76-32c06de354ce" />
-```
-10.create task to read data from stream and schedule-to run
+
+10. Create task to read data from stream and schedule-to run
 ```
 CREATE OR REPLACE TASK HR_DATALAKE.STAGING.STREAM_TO_PRODUCTION_TASK
 WAREHOUSE = COMPUTE_WH
@@ -202,16 +201,16 @@ WHEN NOT MATCHED AND S.METADATA$ACTION = 'INSERT' THEN
 -- Start the task
 ALTER TASK HR_DATALAKE.STAGING.STREAM_TO_PRODUCTION_TASK RESUME;
 ```
-11.Insert sample data on staging 
+11. Insert sample data on staging 
 ```
 INSERT INTO HR_DATALAKE.STAGING.EMPLOYEE_DETAIL (
     EMPLOYEE_ID, FIRST_NAME, LAST_NAME, EMAIL, HIRE_DATE, DEPARTMENT_NAME, JOB_TITLE, COST_CENTER, LOCATION, MANAGER_NAME, EMPLOYMENTSTATUS, ISACTIVE
 ) VALUES
 (1008, 'Liam', 'Anderson', 'liam.anderson@corp.com', '2024-03-20', 'Operations', 'Supply Chain Analyst', 'CC106', 'Denver', 'Karen White', 'Full-Time', TRUE);
 ```
-12.Check the task run history 
+12. Check the task run history 
 <img width="1656" height="619" alt="image" src="https://github.com/user-attachments/assets/8afdbbba-2c07-40c1-9011-7a5b0d26b3fa" />
-13.Validate the data in Production table 
+13. Validate the data in Production table 
 ```
 SELECT * FROM HR_DATALAKE.PRODUCTION.EMPLOYEE_DETAIL;
 ```
